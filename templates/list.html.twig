@@ -1,0 +1,13 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block body %}
+<h1>Video editieren</h1>
+<div class="list-group">
+    {% for entry in videos %}
+        <a href="edit/{{ entry.id }}" class="list-group-item list-group-item-action">
+        {{ entry.name }}
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
+    

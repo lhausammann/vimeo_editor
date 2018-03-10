@@ -1,0 +1,22 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Import videos{% endblock %}
+
+{% block body %}
+    <form method="post">
+    {% for entry in videos %}
+        {% set importId = entry.importId %}
+        <textarea name="i[{{importId}}][name]" style="font-weight:bold">{{ entry.name ?: '(Untitled)' }}</textarea>
+        <textarea name="i[{{importId}}][description]">{{ entry.description ?: '(no description)' }}</textarea>
+        <img src="{{entry.img}}" width="70" />
+        <input type="hidden" name="i[{{importId}}][img]" value="{{entry.img}}" />
+        <input type="hidden" name="i[{{importId}}][id]" value="{{entry.id}}" />
+        <input type="checkbox" checked="checked" name="i[{{importId}}][checked]" />
+        <input type="hidden" name="i[{{importId}}][embed]" value="{{entry.embed}}"/>
+        <hr />
+    {% endfor %}
+    <input type="submit" value="Importieren" class="btn btn-primary" />
+    </form>
+
+{% endblock %}
