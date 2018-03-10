@@ -25,7 +25,7 @@ class Client {
     
     public function __construct(Config $config, SessionInterface $cache) {
         $this->config = $config;
-        $this->client = new Vimeo($this->config->appId, $this->config->secret);
+        $this->client = new \Vimeo\Vimeo($this->config->appId, $this->config->secret);
         $this->cache = $cache;
         //put your code here
     }  
