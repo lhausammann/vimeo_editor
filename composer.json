@@ -14,12 +14,12 @@
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "^3.4",
         "symfony/web-server-bundle": "^3.4",
-        "symfony/yaml": "^3.4"
-    },
-    "require-dev": {
-        "symfony/dotenv": "^3.4",
+        "symfony/yaml": "^3.4",
         "vimeo/vimeo-api": "^2.0"
 
+    },
+    "require-dev": {
+        "symfony/dotenv": "^3.4"
     },
     "config": {
         "preferred-install": {
