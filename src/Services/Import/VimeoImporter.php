@@ -9,7 +9,7 @@
 namespace App\Services\Import;
 
 use App\Repository\VideoRepository;
-use App\Services\Vimeo\Client;
+use App\Services\VimeoVClient\Client;
 /**
  * Description of VimeoImporter
  *

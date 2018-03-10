@@ -1,6 +1,6 @@
 <?php
-namespace App\Services\Vimeo;
-use Vimeo;
+namespace App\Services\VimeoVClient;
+use Vimeo\Vimeo;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /*

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App\Services\Vimeo;
+namespace App\Services\VimeoVClient;
 
 /**
  * Description of VimeoClientException

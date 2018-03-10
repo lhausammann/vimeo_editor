@@ -26,7 +26,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
      */
     public function importAction(Request $request) 
     {
-        $client = $this->container->get('App\\Services\\Vimeo\\Client');
+        $client = $this->container->get('App\\Services\\VimeoVClient\\Client');
         $repo = $this->get('App\\Repository\\VideoRepository');
         $unimportedRepo = $this->get('App\\Repository\\UnimportedVideoRepository');
         $videos = $client->getVideos();
