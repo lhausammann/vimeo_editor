@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Vimeo;
+namespace App\Services\VimeoVClient;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,9 +16,9 @@ namespace App\Services\Vimeo;
 
 class Config 
 {
-    public $vimeoId;
-    public $vimeoSecret;
-    public $vimeoAccessToken;
+    public $appId;
+    public $secret;
+    public $accessToken;
 
     public function __construct($vimeoAppId, $vimeoAppSecret, $vimeoAccessToken) {
         $this->appId = $vimeoAppId;

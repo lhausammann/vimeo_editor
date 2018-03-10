@@ -25,13 +25,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Services\Vimeo\Config:
+    App\Services\VimeoVClient\Config:
         arguments:
             $vimeoAppId: '%env(VIMEO_APP_ID)%'
             $vimeoAppSecret: '%env(VIMEO_APP_SECRET)%'
             $vimeoAccessToken: '%env(VIMEO_ACCESS_TOKEN)%'
     
-    App\Services\Vimeo\Client:
+    App\Services\VimeoVClient\Client:
         public: true
         
     App\Services\Repository\VideoRepository:
