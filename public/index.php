@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 require __DIR__.'/../vendor/autoload.php';
 
 set_include_path(__DIR__ . '../vendor/vimeo/vimeo-api/src/Vimeo');
-
+var_dump(get_include_path());
 // The check is to ensure we don't use .env in production
 if (!isset($_SERVER['APP_ENV'])) {
     if (!class_exists(Dotenv::class)) {
