@@ -77,6 +77,14 @@ class AdminController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
     }
     
     /**
+     * @Route("/", name="admin_home")
+     */
+    public function adminHomeAction() 
+    {
+        return $this->redirectToRoute('list');
+    }
+    
+    /**
      * @Route("/edit/{id}",name="edit")
      */
     public function editAction(int $id) 

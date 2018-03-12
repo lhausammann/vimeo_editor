@@ -1,12 +1,14 @@
 <?php
 namespace App\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface
 {
@@ -19,20 +21,15 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
      */
     private $username;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
      */
     private $plainPassword;
 
@@ -91,6 +88,14 @@ class User implements UserInterface
         // The bcrypt and argon2i algorithms don't require a separate salt.
         // You *may* need a real salt if you choose a different encoder.
         return null;
+    }
+    
+    public function eraseCredentials() {
+        return null;
+    }
+    
+    public function getRoles() {
+        return array('user');
     }
 
     // other methods, including security methods like getRoles()

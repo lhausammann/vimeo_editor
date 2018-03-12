@@ -2,8 +2,8 @@
 // src/AppBundle/Controller/RegistrationController.php
 namespace App\Controller;
 
-use AppBundle\Form\UserType;
-use AppBundle\Entity\User;
+use App\Form\UserType;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends Controller
 {
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/signup", name="user_registration")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -33,11 +33,11 @@ class UserController extends Controller
             $entityManager->flush();
 
             
-            return $this->redirectToRoute('home');
+            // return $this->redirectToRoute('home');
         }
-
+        // var_dump($form->createView());
         return $this->render(
-            'registration/register.html.twig',
+            'front/register.html.twig',
             array('form' => $form->createView())
         );
     }

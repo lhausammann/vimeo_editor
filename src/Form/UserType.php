@@ -13,7 +13,7 @@ namespace App\Form;
  *
  * @author luzius
  */
-use AppBundle\Entity\User;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
