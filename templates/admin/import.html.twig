@@ -1,5 +1,5 @@
 {# empty Twig template #}
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}Import videos{% endblock %}
 {% block body %}
@@ -33,7 +33,7 @@
                 <img src="{{entry.img}}" width="70" />
             </td>
             <td>
-                        <input type="checkbox" checked="checked" name="i[{{importId}}][checked]" />
+                <input type="checkbox" checked="checked" name="i[{{importId}}][checked]" />
             </td>
         </tr>
         
@@ -42,7 +42,7 @@
         <input type="hidden" name="i[{{importId}}][embed]" value="{{entry.embed}}"/>
         {% else %}
             <p class="alert alert-success">
-                Es sind keine nicht-importierten Videos auf Vimeo vorhanden<br>
+                Es sind keine neuen Videos auf Vimeo seit dem letzten Import vorhanden<br>
                 <a href="/admin/list">Zur Übersicht</a>
             </p>
     {% endfor %}

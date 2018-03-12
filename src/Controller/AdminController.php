@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/admin")
  * @author luzius
  */
-class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller {
+class AdminController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller {
     //put your code here
     /**
      * @Route("/import")
@@ -64,7 +64,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
             $videosToImport[] = $videoData;
         }
         
-        return $this->render('import.html.twig', array('videos' => $videosToImport, 'isActive' => 'import'));
+        return $this->render('admin/import.html.twig', array('videos' => $videosToImport, 'isActive' => 'import'));
     }
     
     /**
@@ -73,7 +73,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
     public function listAction() 
     {
         $repo = $this->get('App\\Repository\\VideoRepository');
-        return $this->render('list.html.twig', array('videos' => $repo->findAll(), 'isActive' => 'edit'));
+        return $this->render('admin/list.html.twig', array('videos' => $repo->findAll(), 'isActive' => 'edit'));
     }
     
     /**
@@ -82,7 +82,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
     public function editAction(int $id) 
     {
         $repo = $this->get('App\\Repository\\VideoRepository');
-        return $this->render('edit.html.twig', array('video' => $repo->findById($id), 'isActive' => 'edit'));
+        return $this->render('admin/edit.html.twig', array('video' => $repo->findById($id), 'isActive' => 'edit'));
     }
     /**
      * 
