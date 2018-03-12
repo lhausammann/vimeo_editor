@@ -89,6 +89,15 @@
     "psr/simple-cache": {
         "version": "1.0.0"
     },
+    "sensio/framework-extra-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
+        }
+    },
     "symfony/apache-pack": {
         "version": "1.0",
         "recipe": {
@@ -263,6 +272,15 @@
     "symfony/stopwatch": {
         "version": "v3.4.5"
     },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "6bcd6c570c017ea6ae5a7a6a027c929fd3542cd8"
+        }
+    },
     "symfony/twig-bridge": {
         "version": "v3.4.5"
     },
@@ -274,6 +292,9 @@
             "version": "3.3",
             "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
         }
+    },
+    "symfony/validator": {
+        "version": "v3.4.6"
     },
     "symfony/var-dumper": {
         "version": "v3.4.5"

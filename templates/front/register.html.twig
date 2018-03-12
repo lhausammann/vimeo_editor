@@ -1,7 +1,8 @@
 {# empty Twig template #}
 {% extends "front/base.html.twig" %}
 {% block body %}
-   {{ form.render }} 
+<div class="form group">
+    <center>
 {{ form_start(form) }}
     {{ form_row(form.username) }}
     {{ form_row(form.email) }}
@@ -10,5 +11,6 @@
 
     <button type="submit">Register!</button>
 {{ form_end(form) }}
-
+</center>
+</divY
 {% endblock %}

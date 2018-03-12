@@ -4,27 +4,39 @@ security:
         in_memory:
             memory:
                 users:
-                    ryan:
-                        password: ryanpass
-                        roles: 'ROLE_USER'
                     admin:
                         password: cats&cows
                         roles: 'ROLE_ADMIN'
+        db:
+            entity:
+                class: App:User
+                property: username
+                        
+        
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        App\Entity\User: plaintext
+
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+        admin:
+            pattern: /admin/
+            security: true
+            http_basic: true
+            # provider: in_memory
+
         main:
             anonymous: true
-
+            provider: db
+            logout:
+                path:   /logout
+                target: /
             # activate different ways to authenticate
 
-            http_basic: true
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: true
+            access_denied_url: /login
+            form_login: 
+                login_path: login
+                check_path: login
             # https://symfony.com/doc/current/security/form_login_setup.html
 
     # Easy way to control access for large sections of your site

@@ -1,0 +1,19 @@
+{% extends "front/base.html.twig" %}
+{% block body %}
+    <div class="list-group">
+        {% for entry in videos %}
+
+            <a href="view/{{ entry.id }}" class="list-group-item list-group-item-action" data-toggle="tooltip" data-placement='left' title="{{ entry.description }}">
+                <img src="{{entry.img}}" width="70" />
+                <h6>{{ entry.name }}</h6>
+            </a>
+        {% else %}
+                <p class="alert alert-info">Es konnten noch keine Videos geladen werden.<br />       
+        {% endfor %}
+    </div>
+    
+    
+<script>
+
+</script>
+{% endblock %}{# empty Twig template #}
