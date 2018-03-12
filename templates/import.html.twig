@@ -2,21 +2,56 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Import videos{% endblock %}
-
 {% block body %}
+    <h2>Videos importieren</h2>
+
     <form method="post">
+    {% if videos %}
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Titel</th>
+            <th scope="col">Beschreibung</th>
+            <th scope="col">Bild</th>
+            <th scope="col">Übernehmen</th>
+          </tr>
+        </thead>
+        <tbody>
+    {% endif %}
+
+
     {% for entry in videos %}
         {% set importId = entry.importId %}
-        <textarea name="i[{{importId}}][name]" style="font-weight:bold">{{ entry.name ?: '(Untitled)' }}</textarea>
-        <textarea name="i[{{importId}}][description]">{{ entry.description ?: '(no description)' }}</textarea>
-        <img src="{{entry.img}}" width="70" />
+        <tr>
+            <td>
+                <textarea name="i[{{importId}}][name]" style="font-weight:bold">{{ entry.name ?: '(Untitled)' }}</textarea>
+            </td>
+            <td>
+                <textarea name="i[{{importId}}][description]">{{ entry.description ?: '(no description)' }}</textarea>
+            </td>
+            <td>
+                <img src="{{entry.img}}" width="70" />
+            </td>
+            <td>
+                        <input type="checkbox" checked="checked" name="i[{{importId}}][checked]" />
+            </td>
+        </tr>
+        
         <input type="hidden" name="i[{{importId}}][img]" value="{{entry.img}}" />
         <input type="hidden" name="i[{{importId}}][id]" value="{{entry.id}}" />
-        <input type="checkbox" checked="checked" name="i[{{importId}}][checked]" />
         <input type="hidden" name="i[{{importId}}][embed]" value="{{entry.embed}}"/>
-        <hr />
+        {% else %}
+            <p class="alert alert-success">
+                Es sind keine nicht-importierten Videos auf Vimeo vorhanden<br>
+                <a href="/admin/list">Zur Übersicht</a>
+            </p>
     {% endfor %}
-    <input type="submit" value="Importieren" class="btn btn-primary" />
+    
+    {% if videos %}
+        </tbody>
+        </table>
+        <input type="submit" value="Importieren" class="btn btn-primary" />
+    {% endif %}
     </form>
 
 {% endblock %}

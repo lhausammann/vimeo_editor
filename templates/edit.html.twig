@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block body %}
-<h1>Video Video Metadaten editieren</h1>
+<h2>Video Metadaten editieren</h2>
 <form action="/admin/save/" id="video_edit" method="post">
     <input type="hidden" name="video[id]" value="{{video.id}}" />
     <div class="form-group">
@@ -13,11 +13,10 @@
     </div>
     
     <input type="submit" class="btn btn-primary" value="Speichern" />
-    <input type="" class="btn btn-danger" value="Löschen" />
 
     <!-- Button to Open the Modal -->
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#video_modal">
-  Video abspielen
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#video_modal">
+  Video Preview
 </button>
 
 <!-- The Modal -->

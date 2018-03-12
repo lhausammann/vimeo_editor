@@ -45,7 +45,8 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
                     $unimportedRepo->persist($unimportedVideo);
                 }
             }
-            return new Response('');
+            
+            return $this->redirectToRoute('list', array('t', time()));
         }
         
         $videosToImport = array();
@@ -63,7 +64,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
             $videosToImport[] = $videoData;
         }
         
-        return $this->render('import.html.twig', array('videos' => $videosToImport));
+        return $this->render('import.html.twig', array('videos' => $videosToImport, 'isActive' => 'import'));
     }
     
     /**
@@ -72,7 +73,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
     public function listAction() 
     {
         $repo = $this->get('App\\Repository\\VideoRepository');
-        return $this->render('list.html.twig', array('videos' => $repo->findAll()));
+        return $this->render('list.html.twig', array('videos' => $repo->findAll(), 'isActive' => 'edit'));
     }
     
     /**
@@ -81,7 +82,7 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
     public function editAction(int $id) 
     {
         $repo = $this->get('App\\Repository\\VideoRepository');
-        return $this->render('edit.html.twig', array('video' => $repo->findById($id)));
+        return $this->render('edit.html.twig', array('video' => $repo->findById($id), 'isActive' => 'edit'));
     }
     /**
      * 

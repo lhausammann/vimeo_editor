@@ -1,12 +1,18 @@
 {# empty Twig template #}
 {% extends "base.html.twig" %}
 {% block body %}
-<h1>Video editieren</h1>
+<h2>Video editieren</h2>
 <div class="list-group">
     {% for entry in videos %}
+
         <a href="edit/{{ entry.id }}" class="list-group-item list-group-item-action">
-        {{ entry.name }}
+            <img src="{{entry.img}}" width="70" />
+            {{ entry.name }}
+        
         </a>
+        {% else %}
+            <p class="alert alert-info">Es sind noch keine Videos vorhanden.<br />
+                <a href="/admin/import">Zum Import</a>
     {% endfor %}
 </div>
 {% endblock %}
