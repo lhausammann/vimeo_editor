@@ -43,7 +43,9 @@
         {% else %}
             <p class="alert alert-success">
                 Es sind keine neuen Videos auf Vimeo seit dem letzten Import vorhanden<br>
-                <a href="/admin/list">Zur Übersicht</a>
+                <a href="/admin/list">Zur Übersicht</a><br>
+                <a href="/admin/delete_all" value="Importieren" class="btn btn-danger">Alle importierten wieder löschen(Demo)</a>
+                
             </p>
     {% endfor %}
     

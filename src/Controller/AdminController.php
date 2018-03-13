@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller {
     //put your code here
     /**
-     * @Route("/import")
+     * @Route("/import", name="import")
      */
     public function importAction(Request $request) 
     {
@@ -76,6 +76,19 @@ class AdminController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
         return $this->render('admin/list.html.twig', array('videos' => $repo->findAll(), 'isActive' => 'edit'));
     }
     
+    /**
+     * @Route("/delete_all", name="delete_all")
+     */
+    public function deleteAllAction() 
+    {
+        
+        $repo = $this->get('App\\Repository\\UnimportedVideoRepository');
+        $repo->deleteAll();
+        $repo = $this->get('App\\Repository\\VideoRepository');
+        $repo->deleteAll();
+        return $this->redirectToRoute('import');
+    }
+   
     /**
      * @Route("/", name="admin_home")
      */

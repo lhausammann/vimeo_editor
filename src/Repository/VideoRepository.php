@@ -31,6 +31,25 @@ class VideoRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('v')->getQuery()->getResult();
     }
     
+    public function deleteAll() 
+    {
+        $em = $this->getEntityManager();
+        $cmd = $em->getClassMetadata('App\\Entity\\Video');
+        $connection = $em->getConnection();
+        $connection->beginTransaction();
+
+        try {
+            # $connection->query('SET FOREIGN_KEY_CHECKS=0');
+            $connection->query('DELETE FROM '.$cmd->getTableName());
+            // Beware of ALTER TABLE here--it's another DDL statement and will cause
+            // an implicit commit.
+            # $connection->query('SET FOREIGN_KEY_CHECKS=1');
+            $connection->commit();
+        } catch (\Exception $e) {
+            $connection->rollback();
+        }
+    }
+    
     /*
      * Prefix the id and fetch the first.
      * Make sure to return first result only.
