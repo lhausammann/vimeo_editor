@@ -1,0 +1,45 @@
+{# empty Twig template #}
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Import videos{% endblock %}
+{% block body %}
+    <h2>User</h2>
+
+
+    {% if users %}
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Login</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+    {% endif %}
+
+
+    {% for entry in users %}
+        <tr>
+            <td>
+                {{ entry.username }}
+            </td>
+            <td>
+                {{ entry.email }}
+            </td>
+
+        </tr>
+        
+        
+        {% else %}
+            <p class="alert alert-info">
+                Es sind noch keine User registriert :(
+            </p>
+    {% endfor %}
+    
+    {% if users %}
+        </tbody>
+        </table>
+    {% endif %}
+    </form>
+
+{% endblock %}

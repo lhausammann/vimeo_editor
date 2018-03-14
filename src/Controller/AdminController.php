@@ -88,6 +88,15 @@ class AdminController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
         $repo->deleteAll();
         return $this->redirectToRoute('import');
     }
+    
+    /**
+     * @Route("/user", name="admin_userå")
+     */
+    public function userAction() 
+    {
+        $repo = $this->get('App\\Repository\\UserRepository');
+        return $this->render('admin/users.html.twig', array('users' => $repo->findByIsActive(true), 'isActive' => 'user'));
+    }
    
     /**
      * @Route("/", name="admin_home")
