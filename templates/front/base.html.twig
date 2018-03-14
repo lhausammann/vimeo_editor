@@ -20,7 +20,7 @@
       {% if not is_granted('ROLE_USER') %} 
       <a class="btn btn-outline-primary" href="/signup">Signup</a>
       {% endif %}
-      <a class="btn btn-outline-primary" href="{{ is_granted('ROLE_USER') ? '/logout' : '/login' }}">{% if is_granted('ROLE_USER') %} Logout {% else %}Login{% endif %}</a>
+      <a class="btn btn-outline-primary" href="{{ is_granted('ROLE_USER') ? '/logout' : '/login' }}">{% if is_granted('ROLE_USER') %} Logout <strong>{{app.user.username}}</strong> {% else %}Login{% endif %}</a>
 
     </div>
 

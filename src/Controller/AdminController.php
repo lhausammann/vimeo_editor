@@ -90,12 +90,23 @@ class AdminController extends \Symfony\Bundle\FrameworkBundle\Controller\Control
     }
     
     /**
-     * @Route("/user", name="admin_userå")
+     * @Route("/toggle_user_active/{id}", name="toggle_user")
+     */
+    public function toggleUserActive($id) 
+    {
+        $repo = $this->get('App\\Repository\\UserRepository');
+        $repo->toggleActive($id);
+        
+        return $this->redirectToRoute('admin_user');
+    }
+    
+    /**
+     * @Route("/user", name="admin_user")
      */
     public function userAction() 
     {
         $repo = $this->get('App\\Repository\\UserRepository');
-        return $this->render('admin/users.html.twig', array('users' => $repo->findByIsActive(true), 'isActive' => 'user'));
+        return $this->render('admin/users.html.twig', array('users' => $repo->findAll(), 'isActive' => 'user'));
     }
    
     /**

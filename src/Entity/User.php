@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="AppUser")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface, \Serializable
+class User implements \Symfony\Component\Security\Core\User\AdvancedUserInterface, \Serializable
 {
     public $plainPassword;
     
@@ -38,6 +38,10 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(name="is_active", type="boolean")
      */
     public $isActive;
+    
+    public function getActive() {
+        return $this->isActive;
+    }
 
     public function __construct()
     {
@@ -49,6 +53,11 @@ class User implements UserInterface, \Serializable
     public function setUsername($username) 
     {
          $this->username = $username;
+    }
+    
+    public function getId() 
+    {
+        return $this->id;
     }
 
     public function getUsername()
@@ -103,6 +112,7 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
+            $this->isActive,
             // see section on salt below
             // $this->salt,
         ));
@@ -115,8 +125,26 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
+            $this->isActive,
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
     }
+
+    public function isAccountNonExpired(): bool {
+        return true;
+    }
+
+    public function isAccountNonLocked(): bool {
+        return true;
+    }
+
+    public function isCredentialsNonExpired(): bool {
+        return true;
+    }
+
+    public function isEnabled(): bool {
+        return $this->isActive;
+    }
+
 }

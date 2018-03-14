@@ -31,4 +31,14 @@ class UserRepository extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceE
             ->getQuery()
             ->getOneOrNullResult();
     }
+    
+    public function toggleActive($id) 
+    {
+        $user = $this->find($id);
+        if ($user) {
+            $user->isActive = !$user->isActive;
+            $this->getEntityManager()->merge($user);
+            $this->getEntityManager()->flush();     
+        }
+    }
 }

@@ -4,7 +4,7 @@
 {% block title %}Import videos{% endblock %}
 {% block body %}
     <h2>User</h2>
-
+    <form>
 
     {% if users %}
         <table class="table">
@@ -12,6 +12,7 @@
           <tr>
             <th scope="col">Login</th>
             <th scope="col">Email</th>
+            <th scope="col">Aktiv</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +27,8 @@
             <td>
                 {{ entry.email }}
             </td>
-
+            <td>
+                <input type="checkbox" value="{{ entry.isActive }}" {{entry.isActive == 1 ? 'checked' }} onclick="location.href='toggle_user_active/{{entry.id}}'" />
         </tr>
         
         
@@ -37,6 +39,8 @@
     {% endfor %}
     
     {% if users %}
+        
+ 
         </tbody>
         </table>
     {% endif %}
